@@ -12,4 +12,5 @@ class ParentController extends Controller
         return view('layouts.parent');
     }
 
+    
 }

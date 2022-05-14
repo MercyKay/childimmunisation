@@ -15,8 +15,11 @@ use App\Http\Controllers;
 |
 */
 
-Route::redirect(uri:'/',destination:'login');
+//Route::redirect(uri:'/',destination:'login');
 
+Route::get('/', function () {
+    return view('layouts.welcome');
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -39,11 +42,32 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         'as'=>'parent']);
     });
 
+    //doctor routes
     Route::group(['middleware' => 'role:doctor', 'prefix' => '', 'as' => 'doctor.'], function() {
         Route::get("/doctor",[
             'uses'=>'App\Http\Controllers\DoctorController@index',
         'as'=>'doctor']);
         });
+
+    Route::group(['middleware' => 'role:doctor', 'prefix' => '', 'as' => 'doctor.'], function() {
+        Route::get("/registerbirth",[
+            'uses'=>'App\Http\Controllers\DoctorController@registerbirth',
+        'as'=>'registerbirth']);
+        });
+        Route::group(['middleware' => 'role:doctor', 'prefix' => '', 'as' => 'doctor.'], function() {
+            Route::get("/immunization",[
+                'uses'=>'App\Http\Controllers\DoctorController@immunization',
+            'as'=>'immunization']);
+            });
+            Route::group(['middleware' => 'role:doctor', 'prefix' => '', 'as' => 'doctor.'], function() {
+                Route::get("/dashboard",[
+                    'uses'=>'App\Http\Controllers\DoctorController@dashboard',
+                'as'=>'dashboard']);
+                });
+
+                Route::get("/users",[
+                    'uses'=>'App\Http\Controllers\DoctorController@users',
+                'as'=>'users']);
 
     Route::group(['middleware' => 'role:admin', 'prefix' => '', 'as' => 'admin.'], function() {
  

@@ -28,7 +28,7 @@
                 <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
                 <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                 
-                <option value="2">Doctor</option>
+                <option value="2">Hospital</option>
                 <option value="3">Parent</option>
                 <option value="1">MOH</option>
                 </select>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="mt-4" x-show="role_id == 2">
-                <x-jet-label for="doctor_licence_number" value="{{ __('Licence Number') }}" />
+                <x-jet-label for="doctor_licence_number" value="{{ __('Hospital Licence Number') }}" />
                 <x-jet-input id="doctor_licence_number" class="block mt-1 w-full" type="text" :value="old('doctor_licence_number')" name="doctor_licence_number" />
             </div>
 
